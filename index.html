@@ -85,7 +85,7 @@
   .btn-ham  { background: var(--accent-ham); color: #0d1a15; }
   .btn-clear { background: var(--border); color: var(--muted); }
   .btn-predict { background: var(--accent-mid); color: #fff; font-size: 0.85rem; padding: 12px 24px; }
-  .examples-list { margin-top: 18px; max-height: 240px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+  .examples-list { margin-top: 18px; max-height: none; overflow-y: visible; display: flex; flex-direction: column; gap: 6px; }
   .example-tag { display: flex; justify-content: space-between; align-items: center; padding: 7px 12px; border-radius: 6px; font-size: 0.82rem; animation: slideIn .2s ease; }
   @keyframes slideIn { from { opacity:0; transform: translateX(-8px); } to { opacity:1; transform:none; } }
   .example-tag.spam { background: rgba(255,77,109,0.12); border-left: 3px solid var(--accent-spam); }
@@ -108,7 +108,7 @@
   .test-input-label { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--test-input-label-color); font-weight: 700; }
   .test-input-label::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-mid); box-shadow: 0 0 8px var(--accent-mid); animation: pulse 2s infinite; }
   @keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--accent-mid); } 50% { opacity: 0.6; box-shadow: 0 0 14px var(--accent-mid); } }
-  .test-area input[type=text]#testInput {
+  input[type=text]#testInput {
     background: var(--test-input-bg) !important;
     border: 2px solid var(--test-input-border) !important;
     border-radius: 10px;
@@ -122,9 +122,9 @@
     transition: box-shadow .2s, border-color .2s, background .25s;
     letter-spacing: 0.01em;
   }
-  .test-area input[type=text]#testInput::placeholder { color: var(--test-input-placeholder); font-style: italic; }
-  .test-area input[type=text]#testInput:focus { box-shadow: 0 0 0 4px rgba(124,131,253,0.3), 0 6px 28px rgba(124,131,253,0.2); border-color: var(--accent-mid) !important; }
-  [data-theme="light"] .test-area input[type=text]#testInput:focus { box-shadow: 0 0 0 4px rgba(80,87,228,0.2), 0 6px 28px rgba(80,87,228,0.15); }
+  input[type=text]#testInput::placeholder { color: var(--test-input-placeholder); font-style: italic; }
+  input[type=text]#testInput:focus { box-shadow: 0 0 0 4px rgba(124,131,253,0.3), 0 6px 28px rgba(124,131,253,0.2); border-color: var(--accent-mid) !important; }
+  [data-theme="light"] input[type=text]#testInput:focus { box-shadow: 0 0 0 4px rgba(80,87,228,0.2), 0 6px 28px rgba(80,87,228,0.15); }
   #result { display: none; flex-direction: column; gap: 14px; }
   .verdict { font-family: 'Space Mono', monospace; font-size: 1.4rem; font-weight: 700; text-align: center; padding: 16px; border-radius: 10px; }
   .verdict.spam { background: rgba(255,77,109,0.15); color: var(--accent-spam); border: 1px solid var(--accent-spam); }
@@ -255,6 +255,23 @@
       <div class="step" id="step2"><span class="snum">STEP 2</span>Inspect the math</div>
     </div>
   </div>
+  <div class="card full-width">
+    <div class="test-input-wrapper">
+      <div class="test-input-label">✦ Try a message here</div>
+      <input type="text" id="testInput" placeholder="e.g.  win free money now  —  or type any sentence to classify…" />
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px">
+      <button class="btn btn-predict" onclick="predict()">→ Classify &amp; Show Math</button>
+      <div class="anim-speed">
+        <label>Speed:</label>
+        <select id="animSpeed">
+          <option value="400">Normal</option>
+          <option value="150">Fast</option>
+          <option value="0">Instant</option>
+        </select>
+      </div>
+    </div>
+  </div>
   <div class="card">
     <h2><span class="dot" style="background:var(--accent-mid)"></span>Training Data</h2>
     <div class="stats-row">
@@ -273,21 +290,6 @@
     </div>
     <div class="tab-panel active" id="tab-classify">
       <div class="test-area">
-        <div class="test-input-wrapper">
-          <div class="test-input-label">✦ Try a message here</div>
-          <input type="text" id="testInput" placeholder="e.g.  win free money now  —  or type any sentence to classify…" />
-        </div>
-        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <button class="btn btn-predict" onclick="predict()">→ Classify &amp; Show Math</button>
-          <div class="anim-speed">
-            <label>Speed:</label>
-            <select id="animSpeed">
-              <option value="400">Normal</option>
-              <option value="150">Fast</option>
-              <option value="0">Instant</option>
-            </select>
-          </div>
-        </div>
         <div id="result">
           <div class="verdict" id="verdictBox">—</div>
           <div class="prob-row">
