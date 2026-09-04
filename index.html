@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Naive Bayes — Live Classroom Lab</title>
+<title>Visual Discovery Space: Spam Detector</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root,
@@ -62,13 +62,6 @@
   .toggle-icon { font-size: 0.9rem; line-height: 1; }
   [data-theme="dark"]  .toggle-icon::before { content: "🌙"; }
   [data-theme="light"] .toggle-icon::before { content: "☀️"; }
-  .formula-bar { background: var(--formula-bg); border-bottom: 1px solid var(--border); padding: 12px 40px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; transition: background .25s; }
-  .formula-bar .label { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-  .formula { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--accent-mid); }
-  .formula .prop { color: var(--muted); }
-  .formula .posterior { color: var(--text); font-weight: bold; }
-  .formula .likelihood { color: var(--accent-ham); }
-  .formula .prior { color: var(--accent-spam); }
   .layout { display: grid; grid-template-columns: 1fr 1fr; max-width: 1400px; margin: 0 auto; padding: 32px 40px; gap: 24px; }
   @media(max-width: 900px) { .layout { grid-template-columns: 1fr; } }
   .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: background .25s, border-color .25s; box-shadow: 0 2px 12px var(--shadow); }
@@ -246,7 +239,7 @@
 <body>
 <header>
   <div>
-    <h1>Naive <span>Bayes</span> Lab</h1>
+    <h1>Visual Discovery Space: <span>Spam Detector</span></h1>
     <div class="legend" style="margin-top:6px">
       <span><div class="dot" style="background:var(--accent-spam)"></div> Spam</span>
       <span><div class="dot" style="background:var(--accent-ham)"></div> Not spam (ham)</span>
@@ -259,26 +252,16 @@
     <span class="toggle-icon"></span>
   </div>
 </header>
-<div class="formula-bar">
-  <span class="label">The formula</span>
-  <span class="formula">
-    <span class="posterior">P(spam | words)</span>
-    <span class="prop"> ∝ </span>
-    <span class="likelihood">P(words | spam)</span>
-    <span class="prop"> × </span>
-    <span class="prior">P(spam)</span>
-  </span>
-  <span style="color:var(--muted);font-size:.75rem">— the posterior is proportional to the likelihood times the prior</span>
-</div>
 <div class="layout">
   <div class="card full-width">
     <h2><span class="dot" style="background:var(--accent-mid)"></span>About This Activity</h2>
-    <p class="intro-text">This activity demonstrates how a message can be classified as spam (unsolicited or from an unknown sender) or ham (legitimate, from someone you know). The model is trained on a small, fixed corpus of 10 labeled examples (5 spam, 5 ham), shown in the Training Data panel below.</p>
+    <p class="intro-text">This activity demonstrates how a message can be classified as spam (unsolicited or from an unknown sender) or ham (legitimate, from someone you know). The model is trained on a small, fixed corpus of 10 labeled examples (5 spam, 5 ham), shown in the Training Data panel below. While the math is there if you're curious, the point of this activity is to explore and build intuition — don't worry about following every calculation.</p>
     <div class="intro-subhead"><span class="dot" style="background:var(--accent-mid)"></span>How to use this lab</div>
     <ol class="intro-steps">
       <li><span><b>Review the training set.</b> Skim the 10 labeled examples in the Training Data panel before testing anything, and note that the classes are balanced (5 spam / 5 ham) — so the model's prior is P(spam) = P(ham) = 0.5.</span></li>
-      <li><span><b>Try it out.</b> Type your message in the blinking box below, starting with sentences you'd expect to be classified correctly, then try sentences with mixed signals (e.g., a word common in both spam and ham).</span></li>
+      <li><span><b>Try it out.</b> Type your message in the blinking box below — you may start with a sentence that clearly reads like spam (or ham), one you'd expect the tool to classify correctly.</span></li>
       <li><span><b>Classify it.</b> Click "Classify &amp; Show Math" (or press Enter). The verdict banner shows the model's decision, and the two bars report the posterior probabilities P(spam∣words) and P(ham∣words).</span></li>
+      <li><span><b>Try again with new sentences.</b> You could experiment with sentences with mixed signals (e.g., a word common in both spam and ham) and see what happens.</span></li>
       <li class="highlight"><span><b>Post on Canvas:</b><br>1) Describe how well the model performs — how often it gets things right, and whether certain types of messages trip it up more than others — and explain, in your own words, why you think it behaves that way.<br>2) Reflect on the concepts covered in class so far. Identify the ones you think are most relevant to this activity, and describe, in your own understanding, how they show up inside the model.</span></li>
     </ol>
   </div>
