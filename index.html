@@ -219,6 +219,14 @@
   .section-divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   .anim-speed { display: flex; gap: 8px; align-items: center; font-size: 0.75rem; color: var(--muted); }
   .anim-speed select { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); padding: 4px 8px; font-family: 'Space Mono', monospace; font-size: 0.7rem; outline: none; cursor: pointer; transition: background .25s, color .25s; }
+  /* ── INTRO / HOW-TO-USE ── */
+  .intro-text { font-size: 0.9rem; line-height: 1.65; color: var(--text); max-width: 880px; }
+  .intro-subhead { font-family: 'Space Mono', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 22px 0 12px; }
+  .intro-steps { list-style: none; display: flex; flex-direction: column; gap: 12px; counter-reset: step; max-width: 880px; }
+  .intro-steps li { display: flex; gap: 14px; align-items: baseline; font-size: 0.88rem; line-height: 1.6; }
+  .intro-steps li::before { counter-increment: step; content: counter(step); flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: rgba(124,131,253,0.15); border: 1px solid var(--accent-mid); color: var(--accent-mid); font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; transform: translateY(2px); }
+  .intro-tip { margin-top: 18px; padding: 12px 16px; border-radius: 8px; background: rgba(124,131,253,0.08); border: 1px solid rgba(124,131,253,0.25); font-size: 0.85rem; line-height: 1.6; color: var(--text); max-width: 880px; }
+  .intro-tip b { color: var(--accent-mid); }
 </style>
 </head>
 <body>
@@ -249,6 +257,17 @@
   <span style="color:var(--muted);font-size:.75rem">— the posterior is proportional to the likelihood times the prior</span>
 </div>
 <div class="layout">
+  <div class="card full-width">
+    <h2><span class="dot" style="background:var(--accent-mid)"></span>About This Activity</h2>
+    <p class="intro-text">This activity demonstrates how a message can be classified as spam (unsolicited or from an unknown sender) or ham (legitimate, from someone you know). The model is trained on a small, fixed corpus of 10 labeled examples (5 spam, 5 ham), shown in the Training Data panel below.</p>
+    <div class="intro-subhead">How to use this lab</div>
+    <ol class="intro-steps">
+      <li><span><b>Review the training set.</b> Skim the 10 labeled examples in the Training Data panel before testing anything, and note that the classes are balanced (5 spam / 5 ham) — so the model's prior is P(spam) = P(ham) = 0.5.</span></li>
+      <li><span><b>Try it out.</b> Test the model with sentences you'd expect to be classified correctly, then try sentences with mixed signals (e.g., a word common in both spam and ham).</span></li>
+      <li><span><b>Classify it.</b> Click "Classify &amp; Show Math" (or press Enter). The verdict banner shows the model's decision, and the two bars report the posterior probabilities P(spam∣words) and P(ham∣words).</span></li>
+      <li><span><b>Post on Canvas.</b><br>1) Describe how well the model performs — how often it gets things right, and whether certain types of messages trip it up more than others. Also explain, in your own words, why you think it behaves that way <br>2) Reflect on the concepts covered in class so far. Identify the ones you think are most relevant to this activity, and describe, in your own understanding, how they show up inside the model.</span></li>
+    <p class="intro-tip"><b>Try this:</b> enter a word that never appears in the training data and check its row in the table — its likelihood is small but never zero, because of Laplace (add-one) smoothing. Then set "Speed" to Normal to watch the log-score accumulate token by token, and try a message where reordering the words would change its meaning to a human reader — the model can't tell the difference, which is exactly what "naïve" refers to.</p>
+  </div>
   <div class="card full-width" style="padding:16px">
     <div class="steps">
       <div class="step active" id="step1"><span class="snum">STEP 1</span>Test a new message</div>
@@ -647,4 +666,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
-
