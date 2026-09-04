@@ -232,6 +232,7 @@
   .intro-steps li.highlight { align-items: flex-start; background: rgba(124,131,253,0.16); border: 2px solid var(--accent-mid); border-radius: 10px; padding: 16px 18px; margin: 4px 0; box-shadow: 0 0 0 3px rgba(124,131,253,0.15), 0 8px 26px rgba(124,131,253,0.25); }
   .intro-steps li.highlight::before { content: none; }
   .intro-steps li.highlight b { color: var(--accent-mid); font-size: 1rem; }
+  .step-note { display: block; margin-top: 6px; font-size: 0.8rem; font-style: italic; color: var(--muted); }
   .intro-tip { margin-top: 18px; padding: 12px 16px; border-radius: 8px; background: rgba(124,131,253,0.08); border: 1px solid rgba(124,131,253,0.25); font-size: 0.85rem; line-height: 1.6; color: var(--text); max-width: 880px; }
   .intro-tip b { color: var(--accent-mid); }
 </style>
@@ -255,12 +256,12 @@
 <div class="layout">
   <div class="card full-width">
     <h2><span class="dot" style="background:var(--accent-mid)"></span>About This Activity</h2>
-    <p class="intro-text">This activity demonstrates how a message can be classified as spam (unsolicited or from an unknown sender) or ham (legitimate, from someone you know). The model is trained on a small, fixed corpus of 10 labeled examples (5 spam, 5 ham), shown in the Training Data panel below. While the math is there if you're curious, the point of this activity is to explore and build intuition — don't worry about following every calculation.</p>
+    <p class="intro-text">This activity demonstrates how a message can be classified as spam (unsolicited or from an unknown sender) or ham (legitimate, from someone you know). The model is trained on a small, fixed collection of 10 labeled examples (5 spam, 5 ham), shown in the Training Data panel below.</p>
     <div class="intro-subhead"><span class="dot" style="background:var(--accent-mid)"></span>How to use this lab</div>
     <ol class="intro-steps">
-      <li><span><b>Review the training set.</b> Skim the 10 labeled examples in the Training Data panel before testing anything, and note that the classes are balanced (5 spam / 5 ham) — so the model's prior is P(spam) = P(ham) = 0.5.</span></li>
+      <li><span><b>Review the training set.</b> Skim the 10 labeled examples in the Training Data panel before testing anything, and note that the classes are balanced (5 spam / 5 ham).</span></li>
       <li><span><b>Try it out.</b> Type your message in the blinking box below — you may start with a sentence that clearly reads like spam (or ham), one you'd expect the tool to classify correctly.</span></li>
-      <li><span><b>Classify it.</b> Click "Classify &amp; Show Math" (or press Enter). The verdict banner shows the model's decision, and the two bars report the posterior probabilities P(spam∣words) and P(ham∣words).</span></li>
+      <li><span><b>Classify it.</b> Click "Classify &amp; Show Math" (or press Enter). The verdict banner shows the model's decision, and the two bars report the posterior probabilities P(spam∣words) and P(ham∣words). <span class="step-note">Note: while the math is there if you're curious, the point of this activity is to explore and build intuition — don't worry about following every calculation.</span></span></li>
       <li><span><b>Try again with new sentences.</b> You could experiment with sentences with mixed signals (e.g., a word common in both spam and ham) and see what happens.</span></li>
       <li class="highlight"><span><b>Post on Canvas:</b><br>1) Describe how well the model performs — how often it gets things right, and whether certain types of messages trip it up more than others — and explain, in your own words, why you think it behaves that way.<br>2) Reflect on the concepts covered in class so far. Identify the ones you think are most relevant to this activity, and describe, in your own understanding, how they show up inside the model.</span></li>
     </ol>
